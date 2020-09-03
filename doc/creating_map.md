@@ -25,7 +25,9 @@ Some vocabulary (just to avoid confusion):
   - entity -- a underscore-separated blocks constructing bidsified name, entity is composed of name and value, separated by dash. entity must be as uniform as possible within modality, values must be intuitive
   - map entry -- bidsmap block corresponding to one recording, starting with `provenance` field and ending with `json`
 
-For MRI the relevant page is (there)[https://bids-specification.readthedocs.io/en/v1.2.0/04-modality-specific-files/01-magnetic-resonance-imaging-data.html]. The current proposal for MPM is (there)[https://docs.google.com/document/d/1QwfHyBzOyFWOLO4u_kkojLpUhW0-4_M7Ubafu9Gf4Gg/edit].
+For MRI the relevant page is (there)[https://bids-specification.readthedocs.io/en/v1.2.0/04-modality-specific-files/01-magnetic-resonance-imaging-data.html]. 
+
+The current proposal for MPM is (there)[https://docs.google.com/document/d/1QwfHyBzOyFWOLO4u_kkojLpUhW0-4_M7Ubafu9Gf4Gg/edit].
 
 In following I will use `[]` to indicate context-depending variables, usually specific paths.
 For example `[path-to-source-dataset]` should be replaced by by your specific path to source dataset.
@@ -73,7 +75,7 @@ If no more errors, look for warnings. Take one of the warnings, but ignore `Map 
 
   a) `[map entry]: Suffix not defined`
   Go to relevent map entry (indexes are python like starting at 0), and set correct suffix and bids entities. Remove checked and template, if present. Save and go to step 0
-  b) `[series]: Placehoder found`
+  b) `[series]: Placeholder found`
   Go to relevent map entry (search by protocol), and look for the string `<<placeholder>>`. Replace the string(s) by correct values for the recording. Remove template and checked, save and go to Step 0
   c) `[series]: Unable to get [field]`
   Go to relevant entry and find the faulty field, Usually it is in json section and in brackets, for ex. `<RFSpoilingPhaseIncrement>`. Replace the field by correct value (either from header, enclosed in brackets, or just by raw value). If value is unknown/not needed, replace by `~`, meaning void value. Remove template, checked, save and go to 0.
@@ -98,7 +100,7 @@ Run bidsification:
 bidsme bidsify prepared bidsified
 ```
 
-You will see warnings about README and dataset\_description. Ignore it, or if you have these files, just pace them into `bidsified` folder.
+You will see warnings about README and dataset\_description. Ignore it, or if you have these files, just place them into `bidsified` folder.
 
 Check for warnings and errors.
   a) Warning `<<placeholder>>`: redo step 2b
